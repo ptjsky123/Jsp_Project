@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../bootstrap/css/bootstrap-responsive.min.css"
+	rel="stylesheet" />
+<script src="../bootstrap/js/jquery-2.1.4.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script>
+   function Register(){
+      location.href="register.jsp";   
+      
+   }
+   
+   $(document).ready(
+			function(){
+		        $("#theMaintop").css("background","black"); 
+		        $("#theGongji").css("border","solid 10px black").css("background","white");
+		        $("#theBlog").css("border","solid 10px black").css("background","white");
+		        $("#theFree").css("border","solid 10px black").css("background","white");
+		    }
+	);	         
+
+</script>
+  <style>
+
+    /* 전체 스타일
+    -------------------------------------------------- */
+    /* 꼬리말 아래 패딩과 연한색 본문 */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+      margin-top: 70px;
+	  background-image: url('../img/back.png');
+	
+    }
+
+
+
+    /* 탐색막대 수정
+    -------------------------------------------------- */
+
+    /* 위치를 잡는 역할을 하는, .navbar를 둘러싸는 .container의 특별한 클래스. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* 회전광고판을 올리는 음수 여백. 90px는 대략 탐색막대의 여백과 높이이다. */
+    }
+    .navbar-wrapper .navbar {
+
+    }
+
+    /* 둘레를 없애고, 대비를 주기위해 상자 그림자를 변경한다 */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* 상표/프로젝트명 크기를 조금 줄인다 */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* 탐색막대 링크에 맞도록 수직 패딩을 늘린다 */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* 탐색막대 링크: 높은 탐색막대에 맞도록 패딩을 늘린다 */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    /* 적절하게 수직 정렬하려고 버튼 위치를 조정한다 */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* 회전광고판 수정
+    -------------------------------------------------- */
+
+    /* 회전광고판 기본 클래스 */
+    .carousel {
+      margin-bottom: 60px;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-top: 200px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+    .carousel-caption .btn {
+      margin-top: 10px;
+    }
+
+
+
+    /* 마케팅 내용
+    -------------------------------------------------- */
+
+    /* 회전광고판 아래에 있는 세개 열의 본문을 중앙 정렬한다 */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* 특집
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0; /* 부트스트랩 <hr> 공간을 더 벌린다 */
+    }
+    .featurette {
+      padding-top: 120px; /* 수직으로 그림 중앙 위치 1 단계: 본문 위아래로 패딩을 더한다. */
+      overflow: hidden; /* 수직으로 그림 중앙 위치 2 단계: 유동 흐름을 마친다 */
+    }
+    .featurette-image {
+      margin-top: -120px; /* 수직으로 그림 중앙 위치 3 단계: 중앙에 배치하기위해 패딩과 동일한 크기의 음수 여백으로 그림을 올린다. */
+    }
+
+    /* 유동 태그 양편에 공간을 두어서 본문과 겹치지 않게 한다. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* 마케딩 제목을 얇게 만든다 */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* 반응형 CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+</style>
+</head>
+<body>
+<!-- 맨윗줄 -->
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a href="Main.html" class="brand">태주니덩주니 project</a> 
+			<a class="btn btn-navbar" data-toggle="collapse"
+				data-target=".nav-collapse"> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span></a>
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<li class="divider-vertical"></li>
+					<li><a href="#theModal"  data-toggle="modal"> 
+					<i class="icon-user"></i> Sign In/Register</a></li>
+			
+					<li class="divider-vertical"></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> 즐겨 찾기<i class="caret"></i></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">게시판</a></li>
+							<li class="dropdown-submenu"><a href="#">지역별</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">서울</a></li>
+									<li><a href="#">경기</a></li>
+								</ul></li>
+							<li class="dropdown-submenu"><a href="#">음식별</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">한식</a></li>
+									<li><a href="#">양식</a></li>
+									<li><a href="#">중식</a></li>
+									<li><a href="#">분식</a></li>
+								</ul></li>
+						</ul></li>
+								
+					<li class="divider-vertical"></li>
+					<li><a href="#">블로그</a></li>
+					
+					<li class="divider-vertical"></li>
+					<li><a href="#">게시판</a></li>
+					
+					<li class="divider-vertical"></li>
+					<li><a href="#">만든이</a></li>
+					
+				</ul>
+				<from class="navbar-form pull-right"> <input type="text"
+					name="txtSearch" /> <input type="submit" value="검색" /> </from>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- 로긴창 -->
+	<div class="modal hide fade" id="theModal">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3>Login</h3>
+		</div>
+		<div class="modal-body">
+			<input type="text" placeholder="id" /><br /> <input type="password"
+				placeholder="password" /><br />
+
+
+			<button type="button" class="btn">로그인</button>
+			<button type="button" class="btn" onclick="Register()">회원가입</button>
+
+		</div>
+	</div>
+	
+	 <div class="container marketing">
+	 
+	 <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../assets/img/examples/slide-01.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>예제 표제.</h1>
+              <p class="lead">인상파의 개척자이며 지도자로, 파리에서 출생하여 소년 시절을 르아브르에서 보냈다. 그곳에서 터너 등의 작품에 영향을 받아 더욱 밝은 색조에 대한 연구를 하게 되었다.</p>
+              <a class="btn btn-large btn-primary" href="#">가입하세요</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item">
+          <img src="../assets/img/examples/slide-02.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>다른 예제 표제.</h1>
+              <p class="lead">인상파의 개척자이며 지도자로, 파리에서 출생하여 소년 시절을 르아브르에서 보냈다. 그곳에서 터너 등의 작품에 영향을 받아 더욱 밝은 색조에 대한 연구를 하게 되었다.</p>
+              <a class="btn btn-large btn-primary" href="#">더 알아보기</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item">
+          <img src="../assets/img/examples/slide-03.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>추가로 하나 더.</h1>
+              <p class="lead">인상파의 개척자이며 지도자로, 파리에서 출생하여 소년 시절을 르아브르에서 보냈다. 그곳에서 터너 등의 작품에 영향을 받아 더욱 밝은 색조에 대한 연구를 하게 되었다.</p>
+              <a class="btn btn-large btn-primary" href="#">갤러리 둘러보기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="en-font-family">&lsaquo;</span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="en-font-family">&rsaquo;</span></a>
+    </div><!-- /.carousel -->
+
+      <!-- 회전광고판 아래에 있는 세개 열 -->
+      <div class="row">
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>제목</h2>
+          <p>유명한 사원에는 난파야, 슈에다곤, 아난다 사원 등 11세기에 건립된 것과 13세기의 밍가라제디 사원 등이 있다. 아난다사는 인도의 불탑형식을 뒤섞어 버마풍으로 재구성한 구조형식으로 알려져 있다. 근세에 재건한 랑군에 있는 슈에다곤사에는 약 110m의 탑이 있다.</p>
+          <p><a class="btn" href="#">자세히 보기 <span class="en-font-family">&raquo;</span></a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>제목</h2>
+          <p>특히 12세기 초 수리아바 르만 2세가 앙코르 와트를 건립함에 이르러 크메르 건축은 발달의 정점에 달하였다. 13세기 건립의 바이욘은 불교사원 건축으로 앙코르 와트와 유사한 구조를 갖고 있으나 고탑일면에 기괴할 정도로 큰 미소를 머금은 인면을 표현한 의장 등은 그 기발한 면에서 일경을 금할 수 없다.</p>
+          <p><a class="btn" href="#">자세히 보기 <span class="en-font-family">&raquo;</span></a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>제목</h2>
+          <p>바이온사원, 파괴된 왕궁, 그곳에 있는 천상의 궁전 파미아나카스사원이 있고, 개선한 군단이 지나가는 승리의 문(성문의 하나)이 있다. 이 밖에 불교사원 프리아파리라이, 절, 테프프라남, 10세기 말에서 12세기 초에 걸쳐서 건립된 사원과 사당 등이 있다.</p>
+          <p><a class="btn" href="#">자세히 보기 <span class="en-font-family">&raquo;</span></a></p>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+	
+	
+ <!-- 본무니시작 메인위쪽 -->
+	<!-- <div class="container">
+	<div class="row">
+		<div class="span12"	 id="theMaintop">
+			<div id="theCarousel" class="carousel slide span6">
+				<ol class="carousel-indicators">
+					<li data-target="#theCarousel" data-slide-to="0" calss="active"></li>
+					<li data-target="#theCarousel" data-slide-to="1" calss="active"></li>
+					<li data-target="#theCarousel" data-slide-to="2" calss="active"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active"><img src="../img/1.jpg"/>
+						<div class="carousel-caption">
+							<h4>우리 아이유어때??</h4>
+							<p>웅이뻐</p>
+						</div>	
+					</div>
+					<div class="item"><img src="../img/3.jpg"/>
+						<div class="carousel-caption">
+						<h4>우리 아이유어때??</h4>
+						<p>웅이뻐</p>
+						</div>	
+					</div>
+					<div class="item"><img src="../img/1.jpg"/>
+						<div class="carousel-caption">
+						<h4>우리 아이유어때??</h4>
+						<p>웅이뻐</p>
+						</div>	
+					</div>								
+							
+				</div>
+				<a href="#theCarousel" class="carousel-control left" data-slide="prev">&lsaquo;</a>
+				<a href="#theCarousel" class="carousel-control right" data-slide="next">&rsaquo;</a>
+				
+			</div>
+		</div> -->
+		
+		
+		<!--메인아래창-->
+			<!-- <div class="span3" id ="theMainbot">
+				<ul class="span2 nav nav-list">
+					<li class="nav-header">메뉴 선택1</li>
+
+					<li class="active"><a href="#">Home</a></li>
+					<li class=""><a href="#">Contact</a></li>
+					<li><a href="#">About</a></li>
+
+					<li class="divider"></li>
+
+					<li class="nav-header">메뉴 선택2</li>
+					<li class="active"><a href="#">Home</a></li>
+					<li class=""><a href="#">Contact</a></li>
+					<li class="disabled"><a href="#">About</a></li>
+				</ul>
+			</div>
+			
+		
+		<div class="span12" id="theMainbot">
+			<div class="span3" id="theGongji">
+			<ul>
+			<li>공지사항</li>
+			<li>디비에서</li>
+			<li>뽑아와야</li>
+			<li>합니다...</li>
+			<li>씨벌</li>			
+			</ul>
+			</div>			
+			
+			<div class="span4" id="theBlog">
+			<ul>
+			<li>블로그으</li>
+			<li>아이것도디비에서</li>
+			<li>뽑아와야</li>
+			<li>합니다...</li>
+			<li>씨벌롬이</li>			
+			</ul>
+			</div>
+			
+			<div class="span4" id="theFree">
+			<ul>
+			<li>자유게시판</li>
+			<li>얘도 디비에서</li>
+			<li>뽑아와야</li>
+			<li>합니다...</li>
+			<li>씨부랄</li>			
+			</ul>
+			</div>		
+		</div>			
+		</div>
+	</div>  -->
+</body>
+</html>
